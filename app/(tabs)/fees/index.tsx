@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Modal, Text, View } from 'react-native';
+import { Modal, Text, View, Platform } from 'react-native';
 import { Stack } from 'expo-router';
 import { AppButton, AppInput, Badge, Banner, Card, ScrollScreen, useAppTheme } from '../../../src/components/ui';
 import { fees } from '../../../src/data/mockData';

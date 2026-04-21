@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Modal, Pressable, Text, View } from 'react-native';
+import { Platform } from 'react-native';
 import { Stack } from 'expo-router';
 import { AppButton, Card, ScrollScreen, useAppTheme } from '../../../src/components/ui';
 import { students } from '../../../src/data/mockData';

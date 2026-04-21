@@ -12,7 +12,9 @@ import {
   TextInput,
   View,
   useColorScheme,
+  Platform,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { GlassView } from 'expo-glass-effect';
 import { themes, spacing, typography } from '../theme/tokens';
@@ -24,11 +26,16 @@ export function useAppTheme() {
 
 export function ScrollScreen({ children }: PropsWithChildren) {
   const theme = useAppTheme();
+  const insets = useSafeAreaInsets();
+
   return (
     <LinearGradient colors={theme.background} style={styles.screen}>
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
-        contentContainerStyle={styles.scrollContent}
+        contentContainerStyle={[
+          styles.scrollContent,
+          Platform.OS === 'web' && { paddingTop: spacing.lg }
+        ]}
       >
         {children}
       </ScrollView>
@@ -36,7 +43,10 @@ export function ScrollScreen({ children }: PropsWithChildren) {
         glassEffectStyle={(useColorScheme() === 'dark' ? 'dark' : 'regular') as any}
         isInteractive
         pointerEvents="none"
-        style={styles.headerGlass}
+        style={[
+          styles.headerGlass,
+          { height: 140 + (Platform.OS === 'web' ? insets.top : 0) }
+        ]}
       />
     </LinearGradient>
   );

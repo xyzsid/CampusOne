@@ -1,4 +1,5 @@
 import { Text, View } from 'react-native';
+import { Platform } from 'react-native';
 import { Stack } from 'expo-router';
 import { AppButton, Badge, Card, ScrollScreen, useAppTheme } from '../../../src/components/ui';
 import { t } from '../../../src/i18n/strings';
